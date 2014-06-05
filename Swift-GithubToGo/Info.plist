@@ -24,6 +24,17 @@
 	<true/>
 	<key>UIMainStoryboardFile</key>
 	<string>Main</string>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>swift-githubtogo</string>
+			</array>
+			<key>CFBundleURLName</key>
+			<string>git_callback</string>
+		</dict>
+	</array>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>

@@ -9,9 +9,17 @@
 import UIKit
 
 class ViewController: UIViewController {
-                            
+    
+    var networkController = NetworkController()
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        var appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+        self.networkController = appDelegate.networkController
+        
+            self.networkController.requestOauthAccessWithCompletion({
+                println("we done playa")
+            })
         // Do any additional setup after loading the view, typically from a nib.
     }
 
