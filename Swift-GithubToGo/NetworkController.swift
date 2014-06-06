@@ -119,5 +119,28 @@ class NetworkController: NSObject {
         return accessTokens[1]
         
     }
+    
+    func searchReposWithString(string: String, withCompletionClosure completionClosure: (repos :Repo[]) ->()) {
+        var request = NSMutableURLRequest(URL: NSURL(string: "https://api.github.com/search/repositories?q=\(string)"))
+        request.HTTPMethod = "GET"
+        
+        let postDataTask = self.urlSession.dataTaskWithRequest(request, completionHandler: {(data, response, error) in
+            
+            if error {
+                println(error.localizedDescription)
+            }
+            println(response)
+            var repoJSON : NSMutableDictionary = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: nil) as NSMutableDictionary
+            var jsonArray = repoJSON["items"] as NSMutableArray
+            
+            var repos : Repo[] = Repo().parseJSONIntoRepos(jsonArray)
+            println(repos.count)
+            
+            completionClosure(repos: repos)
+            
+            })
+        postDataTask.resume()
+        
+    }
    
 }
