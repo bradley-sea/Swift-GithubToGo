@@ -16,7 +16,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: NSDictionary?) -> Bool {
-        // Override point for customization after application launch.
+
+        
+        
+        if self.networkController.token {
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            
+            self.window!.rootViewController = storyboard.instantiateViewControllerWithIdentifier("ReposViewController") as UIViewController
+        }
+        
         return true
     }
     

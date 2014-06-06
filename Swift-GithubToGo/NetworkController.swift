@@ -19,11 +19,25 @@ class NetworkController: NSObject {
     
     var completion:() -> () = {}
     var urlSession = NSURLSession()
-    var token = ""
+    var token : String?
+
     
    init() {
+    
+     var userDefaults = NSUserDefaults.standardUserDefaults()
+     self.token = userDefaults.objectForKey("token") as String
+    
+    if self.token {
+        println(self.token)
+        var configuration = NSURLSessionConfiguration.ephemeralSessionConfiguration()
+        configuration.HTTPAdditionalHeaders = ["Authorization" : "token \(self.token)"]
+        self.urlSession = NSURLSession(configuration: configuration)
+        
+    } else {
+    
     var configuration = NSURLSessionConfiguration.defaultSessionConfiguration()
     self.urlSession = NSURLSession(configuration: configuration)
+    }
     
     }
     
@@ -47,6 +61,8 @@ class NetworkController: NSObject {
             var repoJSON : NSMutableArray = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: nil) as NSMutableArray
             
             var repos : Repo[] = Repo().parseJSONIntoRepos(repoJSON)
+            println(repos.count)
+            
             completionClosure(repos: repos)
             
             })
@@ -76,6 +92,7 @@ class NetworkController: NSObject {
                 println(error.localizedDescription)
             }
             self.token = self.convertOauthResponseData(data)
+            NSUserDefaults.standardUserDefaults().setObject(self.token, forKey: "token")
             println(self.token)
             var config = NSURLSessionConfiguration.ephemeralSessionConfiguration()
             config.HTTPAdditionalHeaders = ["Authorization" : "token \(self.token)"]

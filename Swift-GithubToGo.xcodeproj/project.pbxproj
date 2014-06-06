@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		007B32B91942408B001C27E2 /* ReposViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 007B32B81942408B001C27E2 /* ReposViewController.swift */; };
 		A22C29101940EB8700601226 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A22C290F1940EB8700601226 /* AppDelegate.swift */; };
 		A22C29121940EB8700601226 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A22C29111940EB8700601226 /* ViewController.swift */; };
 		A22C29151940EB8700601226 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A22C29131940EB8700601226 /* Main.storyboard */; };
@@ -27,6 +28,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		007B32B81942408B001C27E2 /* ReposViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReposViewController.swift; sourceTree = "<group>"; };
 		A22C290A1940EB8700601226 /* Swift-GithubToGo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Swift-GithubToGo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A22C290E1940EB8700601226 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A22C290F1940EB8700601226 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -81,6 +83,7 @@
 			children = (
 				A22C290F1940EB8700601226 /* AppDelegate.swift */,
 				A22C29111940EB8700601226 /* ViewController.swift */,
+				007B32B81942408B001C27E2 /* ReposViewController.swift */,
 				A22C292C1940ED0F00601226 /* NetworkController.swift */,
 				A2D54A6F194227C20091B924 /* Repo.swift */,
 				A22C29131940EB8700601226 /* Main.storyboard */,
@@ -216,6 +219,7 @@
 			files = (
 				A22C29121940EB8700601226 /* ViewController.swift in Sources */,
 				A22C29101940EB8700601226 /* AppDelegate.swift in Sources */,
+				007B32B91942408B001C27E2 /* ReposViewController.swift in Sources */,
 				A22C292D1940ED0F00601226 /* NetworkController.swift in Sources */,
 				A2D54A70194227C20091B924 /* Repo.swift in Sources */,
 			);

@@ -10,7 +10,7 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    var networkController = NetworkController()
+    var networkController : NetworkController?
     var box : UIView?
     
     override func viewDidLoad() {
@@ -18,7 +18,7 @@ class ViewController: UIViewController {
         
         var appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
         self.networkController = appDelegate.networkController
-            self.networkController.requestOauthAccessWithCompletion(){
+            self.networkController!.requestOauthAccessWithCompletion(){
                 println("we done playa")
             }
 
