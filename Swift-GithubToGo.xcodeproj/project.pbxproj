@@ -13,6 +13,7 @@
 		A22C29171940EB8700601226 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A22C29161940EB8700601226 /* Images.xcassets */; };
 		A22C29231940EB8700601226 /* Swift_GithubToGoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A22C29221940EB8700601226 /* Swift_GithubToGoTests.swift */; };
 		A22C292D1940ED0F00601226 /* NetworkController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A22C292C1940ED0F00601226 /* NetworkController.swift */; };
+		A2D54A70194227C20091B924 /* Repo.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2D54A6F194227C20091B924 /* Repo.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +37,7 @@
 		A22C29211940EB8700601226 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A22C29221940EB8700601226 /* Swift_GithubToGoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Swift_GithubToGoTests.swift; sourceTree = "<group>"; };
 		A22C292C1940ED0F00601226 /* NetworkController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkController.swift; sourceTree = "<group>"; };
+		A2D54A6F194227C20091B924 /* Repo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Repo.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +82,7 @@
 				A22C290F1940EB8700601226 /* AppDelegate.swift */,
 				A22C29111940EB8700601226 /* ViewController.swift */,
 				A22C292C1940ED0F00601226 /* NetworkController.swift */,
+				A2D54A6F194227C20091B924 /* Repo.swift */,
 				A22C29131940EB8700601226 /* Main.storyboard */,
 				A22C29161940EB8700601226 /* Images.xcassets */,
 				A22C290D1940EB8700601226 /* Supporting Files */,
@@ -214,6 +217,7 @@
 				A22C29121940EB8700601226 /* ViewController.swift in Sources */,
 				A22C29101940EB8700601226 /* AppDelegate.swift in Sources */,
 				A22C292D1940ED0F00601226 /* NetworkController.swift in Sources */,
+				A2D54A70194227C20091B924 /* Repo.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -401,6 +405,7 @@
 				A22C29281940EB8700601226 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		A22C29291940EB8700601226 /* Build configuration list for PBXNativeTarget "Swift-GithubToGoTests" */ = {
 			isa = XCConfigurationList;
@@ -409,6 +414,7 @@
 				A22C292B1940EB8700601226 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

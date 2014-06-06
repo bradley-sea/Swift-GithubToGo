@@ -33,6 +33,28 @@ class NetworkController: NSObject {
         UIApplication.sharedApplication().openURL(NSURL(string: urlString))
     }
     
+    func retrieveMyReposWithCompletion(completionClosure: (repos :Repo[]) ->()) {
+        
+        var request = NSMutableURLRequest(URL: NSURL(string: "https://api.github.com/user/repos"))
+        request.HTTPMethod = "GET"
+        
+        let postDataTask = self.urlSession.dataTaskWithRequest(request, completionHandler: {(data, response, error) in
+            
+            if error {
+                println(error.localizedDescription)
+            }
+            println(response)
+            var repoJSON : NSMutableArray = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: nil) as NSMutableArray
+            
+            var repos : Repo[] = Repo().parseJSONIntoRepos(repoJSON)
+            completionClosure(repos: repos)
+            
+            })
+        postDataTask.resume()
+        
+        
+    }
+    
     func handleOauthCallbackWithURL(url : NSURL)
     {
         
@@ -54,8 +76,12 @@ class NetworkController: NSObject {
                 println(error.localizedDescription)
             }
             self.token = self.convertOauthResponseData(data)
+            println(self.token)
+            var config = NSURLSessionConfiguration.ephemeralSessionConfiguration()
+            config.HTTPAdditionalHeaders = ["Authorization" : "token \(self.token)"]
+            self.urlSession = NSURLSession(configuration: config)
+            println(self.token)
             self.completion()
-
             })
         postDataTask.resume()
     }
