@@ -25,8 +25,8 @@ class NetworkController: NSObject {
    init() {
     
      var userDefaults = NSUserDefaults.standardUserDefaults()
-     self.token = userDefaults.objectForKey("token") as String
-    
+     self.token = userDefaults.objectForKey("token") as? String
+
     if self.token {
         println(self.token)
         var configuration = NSURLSessionConfiguration.ephemeralSessionConfiguration()

@@ -19,7 +19,10 @@ class ViewController: UIViewController {
         var appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
         self.networkController = appDelegate.networkController
             self.networkController!.requestOauthAccessWithCompletion(){
-                println("we done playa")
+                NSOperationQueue.mainQueue().addOperationWithBlock() { () in
+                
+                    self.performSegueWithIdentifier("pushRepos", sender: self)
+                }
             }
 
     }
