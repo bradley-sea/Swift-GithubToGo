@@ -15,6 +15,8 @@
 		A22C29231940EB8700601226 /* Swift_GithubToGoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A22C29221940EB8700601226 /* Swift_GithubToGoTests.swift */; };
 		A22C292D1940ED0F00601226 /* NetworkController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A22C292C1940ED0F00601226 /* NetworkController.swift */; };
 		A2D54A70194227C20091B924 /* Repo.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2D54A6F194227C20091B924 /* Repo.swift */; };
+		D6B2EE0A19425081005606E7 /* GitHub-Mark_White.png in Resources */ = {isa = PBXBuildFile; fileRef = D6B2EE0919425081005606E7 /* GitHub-Mark_White.png */; };
+		D6B2EE0C194254A0005606E7 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6B2EE0B194254A0005606E7 /* SearchViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +42,8 @@
 		A22C29221940EB8700601226 /* Swift_GithubToGoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Swift_GithubToGoTests.swift; sourceTree = "<group>"; };
 		A22C292C1940ED0F00601226 /* NetworkController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkController.swift; sourceTree = "<group>"; };
 		A2D54A6F194227C20091B924 /* Repo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Repo.swift; sourceTree = "<group>"; };
+		D6B2EE0919425081005606E7 /* GitHub-Mark_White.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "GitHub-Mark_White.png"; sourceTree = "<group>"; };
+		D6B2EE0B194254A0005606E7 /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +91,7 @@
 				A22C292C1940ED0F00601226 /* NetworkController.swift */,
 				A2D54A6F194227C20091B924 /* Repo.swift */,
 				A22C29131940EB8700601226 /* Main.storyboard */,
+				D6B2EE0B194254A0005606E7 /* SearchViewController.swift */,
 				A22C29161940EB8700601226 /* Images.xcassets */,
 				A22C290D1940EB8700601226 /* Supporting Files */,
 			);
@@ -96,6 +101,7 @@
 		A22C290D1940EB8700601226 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				D6B2EE0919425081005606E7 /* GitHub-Mark_White.png */,
 				A22C290E1940EB8700601226 /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -200,6 +206,7 @@
 			files = (
 				A22C29151940EB8700601226 /* Main.storyboard in Resources */,
 				A22C29171940EB8700601226 /* Images.xcassets in Resources */,
+				D6B2EE0A19425081005606E7 /* GitHub-Mark_White.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -217,6 +224,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D6B2EE0C194254A0005606E7 /* SearchViewController.swift in Sources */,
 				A22C29121940EB8700601226 /* ViewController.swift in Sources */,
 				A22C29101940EB8700601226 /* AppDelegate.swift in Sources */,
 				007B32B91942408B001C27E2 /* ReposViewController.swift in Sources */,
