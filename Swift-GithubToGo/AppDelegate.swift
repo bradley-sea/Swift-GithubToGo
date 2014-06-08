@@ -22,7 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if self.networkController.token {
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             
-            self.window!.rootViewController = storyboard.instantiateViewControllerWithIdentifier("ReposViewController") as UIViewController
+            self.window!.rootViewController = storyboard.instantiateViewControllerWithIdentifier("ReposViewController") as UITabBarController
         }
         
         return true

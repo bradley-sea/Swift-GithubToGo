@@ -8,13 +8,15 @@
 
 import UIKit
 
-class SearchViewController: UIViewController,UITableViewDelegate,UITableViewDataSource, UISearchBarDelegate {
+class SearchViewController: UIViewController, UISearchBarDelegate {
+ 
+    @IBOutlet var segmentControl : UISegmentedControl = nil
     @IBOutlet var searchBar : UISearchBar
-    @IBOutlet var tableView : UITableView
-    
-    var networkController : NetworkController?
-    var searchRepos = Repo[]()
-    
+    @IBOutlet var container : UIView = nil
+
+    var userSearchVC : UserSearchViewController?
+    var repoSearchVC : RepoSearchViewController?
+   
     init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
         // Custom initialization
@@ -22,58 +24,74 @@ class SearchViewController: UIViewController,UITableViewDelegate,UITableViewData
     
     init(coder aDecoder: NSCoder!) {
         super.init(coder: aDecoder)
+        
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        var appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+        self.searchBar.delegate = self
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
         
-        self.networkController = appDelegate.networkController
-
+        self.userSearchVC = storyboard.instantiateViewControllerWithIdentifier("UserSearchVC") as? UserSearchViewController
+        self.userSearchVC!.view.frame = self.container.bounds
+        self.addChildViewController(self.userSearchVC!)
+        self.userSearchVC!.didMoveToParentViewController(self)
+        
+        self.repoSearchVC = storyboard.instantiateViewControllerWithIdentifier("RepoSearchVC") as? RepoSearchViewController
+        self.repoSearchVC!.view.frame = self.container.bounds
+        self.addChildViewController(self.repoSearchVC!)
+        self.repoSearchVC!.didMoveToParentViewController(self)
+        self.container.addSubview(self.repoSearchVC!.view)
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-    func tableView(tableView: UITableView!, numberOfRowsInSection section: Int) -> Int {
-        return self.searchRepos.count
-    }
-    
-    func tableView(tableView: UITableView!, cellForRowAtIndexPath indexPath: NSIndexPath!) -> UITableViewCell! {
-        let cell : UITableViewCell = tableView.dequeueReusableCellWithIdentifier("SearchCell", forIndexPath: indexPath) as UITableViewCell
-        
-        var repo : Repo = self.searchRepos[indexPath.row]
-        cell.textLabel.text = repo.name
-        
-        return cell
-    }
-    
-    func searchBarSearchButtonClicked( searchBar: UISearchBar!) {
-        
-        
-        self.networkController!.searchReposWithString(self.searchBar.text) {
-            (repos: Repo[]) in
-            
-            self.searchRepos = repos
-            
-            NSOperationQueue.mainQueue().addOperationWithBlock() { () in
-                
-                
-                self.tableView.reloadData()
-                
-            }
-    }
-    }
-    /*
-    // #pragma mark - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue?, sender: AnyObject?) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
+    func searchBarSearchButtonClicked( searchBar: UISearchBar!) {
+        if self.segmentControl.selectedSegmentIndex == 0 {
+            self.repoSearchVC!.searchForRepo(searchBar.text)
+            searchBar.resignFirstResponder()
+        }
+    
     }
-    */
+    
+    @IBAction func segmentSelected(sender : UISegmentedControl) {
+
+        if sender.selectedSegmentIndex == 0 {
+            sender.enabled = false
+            self.container.addSubview(self.repoSearchVC!.view)
+            self.repoSearchVC!.view.alpha = 0
+            
+                        UIView.animateWithDuration(0.3, animations:{ ()  in
+                            self.userSearchVC!.view.alpha = 0
+                            self.repoSearchVC!.view.alpha = 1
+                            }, completion: { (Bool) in
+                                self.userSearchVC!.view.removeFromSuperview()
+                                self.userSearchVC!.removeFromParentViewController()
+                                sender.enabled = true
+                            }
+                        )
+        }
+        
+        else {
+            
+            sender.enabled = false
+            self.container.addSubview(self.userSearchVC!.view)
+            self.userSearchVC!.view.alpha = 0
+        
+            UIView.animateWithDuration(0.3, animations:{ ()  in
+                self.userSearchVC!.view.alpha = 1
+                self.repoSearchVC!.view.alpha = 0
+                }, completion: { (Bool) in
+                    self.repoSearchVC!.view.removeFromSuperview()
+                    self.repoSearchVC!.removeFromParentViewController()
+                    sender.enabled = true
+                }
+            )
+        }
+    }
+    
 
 }
