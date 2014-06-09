@@ -12,8 +12,8 @@ class ReposViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     var networkController : NetworkController?
     @IBOutlet var tableView : UITableView
-    var myRepos = Repo[]()
-    
+    var myPublicRepos = Repo[]()
+    var myPrivateRepos = Repo[]()
 
     init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
@@ -32,13 +32,9 @@ class ReposViewController: UIViewController, UITableViewDelegate, UITableViewDat
         self.networkController!.retrieveMyReposWithCompletion() {
             (repos: Repo[]) in
             
-            self.myRepos = repos
-            
+            self.seperateIntoPublicAndPrivate(repos)
             NSOperationQueue.mainQueue().addOperationWithBlock() { () in
-                
-                
                 self.tableView.reloadData()
-
             }
         }
         
@@ -48,22 +44,58 @@ class ReposViewController: UIViewController, UITableViewDelegate, UITableViewDat
         super.didReceiveMemoryWarning()
     }
     
+    func numberOfSectionsInTableView(tableView: UITableView!) -> Int {
+        return 2
+    }
+    
+    func tableView(tableView: UITableView!,
+        titleForHeaderInSection section: Int) -> String! {
+            if (section == 0) {
+                return "My Public Repos"
+            }
+            else {
+                return "My Private Repos"
+            }
+    }
+    
     func tableView(tableView: UITableView!, numberOfRowsInSection section: Int) -> Int
     {
-        return self.myRepos.count
+        if section == 0 {
+            return self.myPublicRepos.count
+        }
+        else {
+            return self.myPrivateRepos.count
+        }
     }
     
     func tableView(tableView: UITableView!, cellForRowAtIndexPath indexPath: NSIndexPath!) -> UITableViewCell!
     {
         let cell : UITableViewCell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as UITableViewCell
         
-        var repo = self.myRepos[indexPath.row] as Repo
+        var repo : Repo
+        if (indexPath.section == 0) {
+            repo = self.myPublicRepos[indexPath.row]
+        }
+        else {
+            repo = self.myPrivateRepos[indexPath.row] as Repo
+        }
         
         cell.textLabel.text = repo.name
         
         return cell
     }
     
-
-
+    func seperateIntoPublicAndPrivate( repos : Repo[])
+    {
+       
+        for repo : Repo in repos {
+           
+            if repo.isPrivate {
+                self.myPrivateRepos += repo
+            }
+            else {
+                self.myPublicRepos += repo
+            }
+        }
+    }
 }

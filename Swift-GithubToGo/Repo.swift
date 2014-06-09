@@ -12,6 +12,7 @@ class Repo: NSObject {
     
     var name = ""
     var repoURL = ""
+    var isPrivate = false
     
     func parseJSONIntoRepos(json : NSMutableArray) -> Repo[] {
         
@@ -20,6 +21,7 @@ class Repo: NSObject {
         for jsonRepo : AnyObject in json {
             var repo = Repo()
             repo.name = jsonRepo.objectForKey("name") as String
+            repo.isPrivate = jsonRepo.objectForKey("private") as Bool
             repos += repo
         }
         return repos
