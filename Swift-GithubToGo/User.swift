@@ -11,5 +11,18 @@ import UIKit
 class User: NSObject {
     
     var name = ""
+    
+    func parseJSONIntoUsers(json : NSMutableArray) -> User[] {
+        
+        var users = User[]()
+        
+        for jsonUser : AnyObject in json {
+            var user = User()
+            user.name = jsonUser.objectForKey("login") as String
+            users += user
+        }
+        return users
+    }
    
 }
+

@@ -13,6 +13,8 @@ class UserSearchViewController: UIViewController, UICollectionViewDataSource{
      var networkController : NetworkController?
      var searchUsers = User[]()
 
+    @IBOutlet var collectionView : UICollectionView = nil
+    
     init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
         // Custom initialization
@@ -27,23 +29,41 @@ class UserSearchViewController: UIViewController, UICollectionViewDataSource{
         
         var appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
         self.networkController = appDelegate.networkController
+        
         // Do any additional setup after loading the view.
+    }
+    
+    func searchForUsers(string : String) {
+        self.networkController!.searchUsersWithString(string) {  (users: User[]) in
+           
+            self.searchUsers = users
+            
+            NSOperationQueue.mainQueue().addOperationWithBlock() { () in
+                
+                self.collectionView.reloadData()
+                
+            }
+            
+            
+        }
     }
     
     func collectionView(collectionView: UICollectionView!,
         numberOfItemsInSection section: Int) -> Int {
-            return 20
+            return self.searchUsers.count
     }
     
     func collectionView(collectionView: UICollectionView!,
         cellForItemAtIndexPath indexPath: NSIndexPath!) -> UICollectionViewCell! {
             
-            let cell = collectionView.dequeueReusableCellWithReuseIdentifier("userSearchCell", forIndexPath: indexPath) as UICollectionViewCell
-            cell.backgroundColor = UIColor.blueColor()
-            cell.contentView.backgroundColor = UIColor.purpleColor()
+            var cell : UserCVCell? = collectionView.dequeueReusableCellWithReuseIdentifier("Users", forIndexPath: indexPath) as? UserCVCell
             
-            return cell
+             var user : User = self.searchUsers[indexPath.row]
+            cell!.nameLbl.text = user.name
+            return cell!
     }
+    
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

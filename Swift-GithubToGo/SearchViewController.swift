@@ -54,6 +54,10 @@ class SearchViewController: UIViewController, UISearchBarDelegate {
             self.repoSearchVC!.searchForRepo(searchBar.text)
             searchBar.resignFirstResponder()
         }
+        else {
+            self.userSearchVC!.searchForUsers(searchBar.text)
+            searchBar.resignFirstResponder()
+        }
     
     }
     

@@ -67,8 +67,6 @@ class NetworkController: NSObject {
             
             })
         postDataTask.resume()
-        
-        
     }
     
     func handleOauthCallbackWithURL(url : NSURL)
@@ -142,5 +140,25 @@ class NetworkController: NSObject {
         postDataTask.resume()
         
     }
-   
+    
+    func searchUsersWithString(string: String, withCompletionClosure completionClosure: (users :User[]) ->()) {
+        var request = NSMutableURLRequest(URL: NSURL(string: "https://api.github.com/search/users?q=\(string)"))
+        request.HTTPMethod = "GET"
+        let postDataTask = self.urlSession.dataTaskWithRequest(request, completionHandler: {(data, response, error) in
+            
+            if error {
+                println(error.localizedDescription)
+            }
+            println(response)
+            var repoJSON : NSMutableDictionary = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: nil) as NSMutableDictionary
+            var jsonArray = repoJSON["items"] as NSMutableArray
+            
+            var users : User[] = User().parseJSONIntoUsers(jsonArray)
+            println(users.count)
+            
+            completionClosure(users: users)
+            
+            })
+        postDataTask.resume()
+    }
 }
