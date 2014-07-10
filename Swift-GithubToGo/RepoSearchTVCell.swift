@@ -10,6 +10,11 @@ import UIKit
 
 class RepoSearchTVCell: UITableViewCell {
 
+    @IBOutlet var titleLabel : UILabel = nil
+    @IBOutlet var descriptionLabel : UILabel = nil
+    
+    @IBOutlet var watchers : UILabel = nil
+    @IBOutlet var forks : UILabel = nil
     init(style: UITableViewCellStyle, reuseIdentifier: String) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         // Initialization code

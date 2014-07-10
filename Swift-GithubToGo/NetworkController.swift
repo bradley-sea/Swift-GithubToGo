@@ -141,8 +141,8 @@ class NetworkController: NSObject {
         
     }
     
-    func searchUsersWithString(string: String, withCompletionClosure completionClosure: (users :User[]) ->()) {
-        var request = NSMutableURLRequest(URL: NSURL(string: "https://api.github.com/search/users?q=\(string)"))
+    func searchUsersWithSearchTerm(searchTerm: String, completionClosure: (users :User[]) ->()) {
+        var request = NSMutableURLRequest(URL: NSURL(string: "https://api.github.com/search/users?q=\(searchTerm)"))
         request.HTTPMethod = "GET"
         let postDataTask = self.urlSession.dataTaskWithRequest(request, completionHandler: {(data, response, error) in
             

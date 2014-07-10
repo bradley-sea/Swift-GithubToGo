@@ -39,11 +39,11 @@ class RepoSearchViewController: UIViewController, UITableViewDataSource {
     }
     
     func tableView(tableView: UITableView!, cellForRowAtIndexPath indexPath: NSIndexPath!) -> UITableViewCell! {
-        let cell : UITableViewCell = tableView.dequeueReusableCellWithIdentifier("repoSearchCell", forIndexPath: indexPath) as UITableViewCell
+        let cell : RepoSearchTVCell = tableView.dequeueReusableCellWithIdentifier("repoSearchCell", forIndexPath: indexPath) as RepoSearchTVCell
         
         var repo : Repo = self.searchRepos[indexPath.row]
-        cell.textLabel.text = repo.name
-        
+        cell.titleLabel.text = repo.name
+        cell.descriptionLabel.text = repo.repoDescription
         return cell
     }
 

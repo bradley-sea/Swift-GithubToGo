@@ -34,18 +34,24 @@ class UserSearchViewController: UIViewController, UICollectionViewDataSource{
     }
     
     func searchForUsers(string : String) {
-        self.networkController!.searchUsersWithString(string) {  (users: User[]) in
-           
-            self.searchUsers = users
-            
-            NSOperationQueue.mainQueue().addOperationWithBlock() { () in
+        
+//        self.networkController!.searchUsersWithSearchTerm("Dr.Dre") {  (users: User[]) in
+//           
+//            self.searchUsers = users
+//            
+//            NSOperationQueue.mainQueue().addOperationWithBlock() { () in
+//                
+//                self.collectionView.reloadData()
+//                
+//            }
+        
+            self.networkController!.searchUsersWithSearchTerm("hello", completionClosure: { (users: User[]) in
+                self.searchUsers = users
                 
-                self.collectionView.reloadData()
-                
-            }
-            
-            
-        }
+                NSOperationQueue.mainQueue().addOperationWithBlock() { () in
+                    
+                    self.collectionView.reloadData() }
+        })
     }
     
     func collectionView(collectionView: UICollectionView!,

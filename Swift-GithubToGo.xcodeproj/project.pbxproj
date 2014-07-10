@@ -19,6 +19,7 @@
 		A2D7A5541945100500AB8512 /* UserSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2D7A5531945100500AB8512 /* UserSearchViewController.swift */; };
 		A2D7A556194512D100AB8512 /* RepoSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2D7A555194512D100AB8512 /* RepoSearchViewController.swift */; };
 		A2D7A558194525D900AB8512 /* UserCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2D7A557194525D900AB8512 /* UserCVCell.swift */; };
+		A2F723F119456DBF00F9C68B /* RepoSearchTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2F723F019456DBF00F9C68B /* RepoSearchTVCell.swift */; };
 		D6B2EE0A19425081005606E7 /* GitHub-Mark_White.png in Resources */ = {isa = PBXBuildFile; fileRef = D6B2EE0919425081005606E7 /* GitHub-Mark_White.png */; };
 		D6B2EE0C194254A0005606E7 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6B2EE0B194254A0005606E7 /* SearchViewController.swift */; };
 /* End PBXBuildFile section */
@@ -50,6 +51,7 @@
 		A2D7A5531945100500AB8512 /* UserSearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserSearchViewController.swift; sourceTree = "<group>"; };
 		A2D7A555194512D100AB8512 /* RepoSearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepoSearchViewController.swift; sourceTree = "<group>"; };
 		A2D7A557194525D900AB8512 /* UserCVCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserCVCell.swift; sourceTree = "<group>"; };
+		A2F723F019456DBF00F9C68B /* RepoSearchTVCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepoSearchTVCell.swift; sourceTree = "<group>"; };
 		D6B2EE0919425081005606E7 /* GitHub-Mark_White.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "GitHub-Mark_White.png"; sourceTree = "<group>"; };
 		D6B2EE0B194254A0005606E7 /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -98,6 +100,7 @@
 				007B32B81942408B001C27E2 /* ReposViewController.swift */,
 				A22C292C1940ED0F00601226 /* NetworkController.swift */,
 				A22C29131940EB8700601226 /* Main.storyboard */,
+				A2F723F019456DBF00F9C68B /* RepoSearchTVCell.swift */,
 				A2D7A557194525D900AB8512 /* UserCVCell.swift */,
 				D6B2EE0B194254A0005606E7 /* SearchViewController.swift */,
 				A2D7A555194512D100AB8512 /* RepoSearchViewController.swift */,
@@ -246,6 +249,7 @@
 				A2D7A558194525D900AB8512 /* UserCVCell.swift in Sources */,
 				A2D54A70194227C20091B924 /* Repo.swift in Sources */,
 				A2D54A721944DD840091B924 /* User.swift in Sources */,
+				A2F723F119456DBF00F9C68B /* RepoSearchTVCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
