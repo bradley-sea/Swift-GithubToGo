@@ -16,7 +16,7 @@ class NetworkController: NSObject {
     let GITHUB_OAUTH_URL = "https://github.com/login/oauth/authorize?"
     let GITHUB_API_URL = "https://api.github.com/"
     let GITHUB_SCOPE = "scope=user,repo"
-    
+    //comment!
     var completion:() -> () = {}
     var urlSession = NSURLSession()
     var token : String?
